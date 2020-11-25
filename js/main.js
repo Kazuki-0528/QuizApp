@@ -22,7 +22,9 @@
     return arr;
   }
 
-  quizSet[currentNum].c.forEach(choice => {
+  const shuffleChoices = shuffle([...quizSet[currentNum].c]);
+  // console.log(quizSet[currentNum].c);
+  shuffleChoices.forEach(choice => {
     const li = document.createElement('li');
     li.textContent = choice;
     choices.appendChild(li);
