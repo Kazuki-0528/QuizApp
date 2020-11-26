@@ -36,10 +36,14 @@ body {
 }
 
 #choices > li.correct {
-  background: rgb(32, 131, 32);
+  background: rgb(24, 155, 230);
   border-color: aquamarine;
-  color: rgb(35, 139, 35);
+  color: black;
   font-weight: bold;
+}
+
+#choices > li.correct::after {
+  content: '...Good!';
 }
 
 #choices > li.wrong {
@@ -47,6 +51,10 @@ body {
   border-color: deeppink;
   color: rgb(187, 14, 43);
   font-weight: bold;
+}
+
+#choices > li.wrong::after {
+  content: '...Wrong!';
 }
 
 #btn {

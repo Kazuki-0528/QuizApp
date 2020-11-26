@@ -11,6 +11,8 @@
     {q: 'What is B?', c: ['C0', 'C1', 'C2']},
   ];
   let currentNum = 0;
+  let isAnswerd;
+  let score = 0;
 
   
 
@@ -23,15 +25,29 @@
   }
 
   function checkAnswer(li) {
+    if (isAnswerd) {
+      return;
+    }
+    isAnswerd = true;
+
     if (li.textContent === quizSet[currentNum].c[0]) {
       li.classList.add('correct');
+      score++;
     } else {
       li.classList.add('wrong');
     }
+
+    btn.classList.remove('disabled');
   }
 
   function setQuiz() {
+    isAnswerd = false;
+
     question.textContent = quizSet[currentNum].q;
+
+    while(choices.firstChild) {
+      choices.removeChild(choices.firstChild);
+    }
 
     const shuffleChoices = shuffle([...quizSet[currentNum].c]);
     shuffleChoices.forEach(choice => {
@@ -42,7 +58,25 @@
     });
     choices.appendChild(li);
     });
+
+    if (currentNum === quizSet.length - 1) {
+      btn.textContent = 'Show Score';
+    }
   }
 
   setQuiz();
+
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('disabled')) {
+      return;
+    }
+    btn.classList.add('disabled');
+
+    if (currentNum === quizSet.length - 1) {
+      console.log(`Score: ${score} / ${quizSet.length}`);
+    } else {
+      currentNum++;
+      setQuiz();
+    }
+  });
 }
