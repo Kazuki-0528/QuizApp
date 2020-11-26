@@ -35,6 +35,20 @@ body {
   background: #11b1d8;
 }
 
+#choices > li.correct {
+  background: rgb(32, 131, 32);
+  border-color: aquamarine;
+  color: rgb(35, 139, 35);
+  font-weight: bold;
+}
+
+#choices > li.wrong {
+  background: pink;
+  border-color: deeppink;
+  color: rgb(187, 14, 43);
+  font-weight: bold;
+}
+
 #btn {
   background: #3498db;
   padding: 8px;
