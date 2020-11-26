@@ -4,12 +4,14 @@
   const question = document.getElementById('question');
   const choices = document.getElementById('choices');
   const btn = document.getElementById('btn');
+  const result = document.getElementById('result');
+  const scoreLabel = document.querySelector('#result > p');
 
-  const quizSet = [
-    {q: 'What is A?', c: ['A0', 'A1', 'A2']},
-    {q: 'What is B', c: ['B0', 'B1', 'B2']},
-    {q: 'What is B?', c: ['C0', 'C1', 'C2']},
-  ];
+  const quizSet = shuffle([
+    {q: 'What Kewl mean ?', c: ['Cool', 'Fuck', 'We']},
+    {q: 'What is this ?', c: ['World', 'Girl', 'Man']},
+    {q: 'Are you sure ?', c: ['Yes man!', 'No bi**h', 'Sure!']},
+  ]);
   let currentNum = 0;
   let isAnswerd;
   let score = 0;
@@ -73,7 +75,8 @@
     btn.classList.add('disabled');
 
     if (currentNum === quizSet.length - 1) {
-      console.log(`Score: ${score} / ${quizSet.length}`);
+      scoreLabel.textContent = `Score: ${score} / ${quizSet.length}`;
+      result.classList.remove('hidden');
     } else {
       currentNum++;
       setQuiz();
